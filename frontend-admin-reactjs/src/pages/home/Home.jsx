@@ -22,7 +22,7 @@ const Home = () => {
 
                 <div className="charts">
                     <Featured />
-                    <Chart />
+                    <Chart title="Lịch sử giao dịch trong 6 tháng qua" aspect={2 / 1} />
                 </div>
                 <div className="listContainer">
                     <div className="listTitle">Giao dịch mới nhất</div>
