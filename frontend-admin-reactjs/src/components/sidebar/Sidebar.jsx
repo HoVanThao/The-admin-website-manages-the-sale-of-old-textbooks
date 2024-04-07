@@ -11,30 +11,44 @@ import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
 import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import { Link } from "react-router-dom";
+import { DarkModeContext } from "../../context/darkModeContext";
+import { useContext } from "react";
+
+// import {PersonOutlineIcon, LocalShippingOutlinedIcon, } from "@mui/icons-material"
 
 const Sidebar = () => {
+    const { dispatch } = useContext(DarkModeContext)
     return (
         <div className="sidebar">
             <div className="top">
-                <span className="logo">HVT Admin</span>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <span className="logo">HVT Admin</span>
+                </Link>
             </div>
-            <hr></hr>
+            <hr />
             <div className="center">
                 <ul>
-                    <p className="title">Main</p>
+                    <p className="title">MAIN</p>
                     <li>
                         <DashboardIcon className="icon" />
                         <span className="span">Bảng điều khiển</span>
                     </li>
                     <p className="title">DANH SÁCH</p>
-                    <li>
-                        <PersonOutlineIcon className="icon" />
-                        <span className="span">Quản lý người dùng</span>
-                    </li>
-                    <li>
-                        <Inventory2OutlinedIcon className="icon" />
-                        <span className="span">Quản lý sản phẩm</span>
-                    </li>
+                    <Link to="/users" style={{ textDecoration: "none" }}>
+                        <li>
+                            <PersonOutlineIcon className="icon" />
+                            <span className="span">Quản lý người dùng</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/products" style={{ textDecoration: "none" }}>
+                        <li>
+                            <Inventory2OutlinedIcon className="icon" />
+                            <span className="span">Quản lý sản phẩm</span>
+                        </li>
+                    </Link>
+
                     <li>
                         <ViewStreamOutlinedIcon className="icon" />
                         <span className="span">Đơn đặt hàng</span>
@@ -77,8 +91,8 @@ const Sidebar = () => {
                 </ul>
             </div>
             <div className="bottom">
-                <div className="colorOption"></div>
-                <div className="colorOption"></div>
+                <div className="colorOption" onClick={() => dispatch({ type: "LIGHT" })}></div>
+                <div className="colorOption" onClick={() => dispatch({ type: "DARK" })}></div>
             </div>
         </div>
     );
